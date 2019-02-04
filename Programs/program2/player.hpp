@@ -1,21 +1,22 @@
-// == PLAYER.HPP - PLAYER CLASS HEADER FILE == //
+/*********************************************************************
+** Program Filename:player.hpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:prototypes for the player class
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #ifndef PLAYER
 #define PLAYER
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
-#include <ctime>
-#include <cmath>
-#include <cstdlib>
-#include <bits/stdc++.h>
 
 #include "hand.hpp"
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 class Player {
 	

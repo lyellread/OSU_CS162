@@ -1,9 +1,23 @@
-// == DECK.CPP - FUNCTION DEFENITIONS FOR DECK CLASS == //
+/*********************************************************************
+** Program Filename:deck.cpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:deck class function definitions
+** Input:na
+** Output:na
+*********************************************************************/
 
 #include "deck.hpp"
 
-
 //==== Constructors and Destructors ====//
+
+/*********************************************************************
+** Function:Deck
+** Description:constructor
+** Parameters:none
+** Pre-Conditions:nothing
+** Post-Conditions:class created
+*********************************************************************/ 
 
 Deck::Deck(){
 
@@ -22,6 +36,14 @@ Deck::Deck(){
 	shuffle_deck();
 }
 
+/*********************************************************************
+** Function:~Deck
+** Description:destructor
+** Parameters:none
+** Pre-Conditions:na
+** Post-Conditions:class destroyed
+*********************************************************************/ 
+
 Deck::~Deck(){
 	
 	//cout << "Deck Destructor Called" << endl;
@@ -29,6 +51,14 @@ Deck::~Deck(){
 }
 
 //==== Getters and Setters and Member Functions ====//
+
+/*********************************************************************
+** Function:print_deck
+** Description:prints deck for debug
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:printed deck
+*********************************************************************/ 
 
 void Deck::print_deck () {
 	
@@ -43,6 +73,15 @@ void Deck::print_deck () {
 	}
 }
 
+/*********************************************************************
+** Function:shuffle_deck
+** Description:shuffles deck
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:shuffled deck
+*********************************************************************/ 
+
+
 void Deck::shuffle_deck(){
 	
 	srand(time(NULL));
@@ -56,11 +95,29 @@ void Deck::shuffle_deck(){
 	}
 }
 
+/*********************************************************************
+** Function:get_deck_size
+** Description:returns size of deck
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:deck size returned
+*********************************************************************/ 
+
+
 int Deck::get_deck_size () {
 	
 	return this->deck_size;
 	
 }
+
+/*********************************************************************
+** Function:pop_from_deck
+** Description:returns the card popped from the deck
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:card returned
+*********************************************************************/ 
+
 
 Card Deck::pop_from_deck(){
 	

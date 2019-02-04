@@ -1,8 +1,24 @@
-// == CARD.CPP - FUNCTION DEFENITIONS FOR CARD CLASS == //
+/*********************************************************************
+** Program Filename:game.cpp
+** Author:Lyell Read
+** Date:1/2/2019
+** Description:Game Class Function Defenitions
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #include "game.hpp"
 
 //==== Constructors and Destructors ====//
+
+/*********************************************************************
+** Function:Game
+** Description:constructor
+** Parameters:none
+** Pre-Conditions:nothing
+** Post-Conditions:class created
+*********************************************************************/ 
 
 Game::Game(){
 	
@@ -11,6 +27,14 @@ Game::Game(){
 	//yeet//
 	
 }
+
+/*********************************************************************
+** Function:~Game
+** Description:destructor
+** Parameters:none
+** Pre-Conditions:na
+** Post-Conditions:class destroyed
+*********************************************************************/ 
 
 Game::~Game(){
 	
@@ -22,19 +46,13 @@ Game::~Game(){
 
 //==== Getters and Setters and Member Functions ====//
 
-int Game::check_for_win(){
-	
-	if (this->players[0].get_hand_size() == 0){
-		return 0;
-	}
-	
-	if (this->players[1].get_hand_size() == 0){
-		return 1;
-	}
-	
-	return -1;
-	
-}
+/*********************************************************************
+** Function:prompt_player
+** Description:player prompt and check
+** Parameters:player_number
+** Pre-Conditions:
+** Post-Conditions:player choice returned
+*********************************************************************/ 
 
 int Game::prompt_player (int player_number){
 	
@@ -73,12 +91,30 @@ int Game::prompt_player (int player_number){
 	return prompt_player(player_number);
 }
 
+/*********************************************************************
+** Function:clear_screen
+** Description:clears screen
+** Parameters:	
+** Pre-Conditions:
+** Post-Conditions:screen clearned
+*********************************************************************/ 
+
+
 void Game::clear_screen(){
 	
 	for (int i=0; i<100; ++i){
 		cout << "\n";
 	}
 }
+
+/*********************************************************************
+** Function:play_turn
+** Description:plays a player turn
+** Parameters:player_number, enemy_player_num
+** Pre-Conditions:
+** Post-Conditions:turn is played
+*********************************************************************/ 
+
 
 void Game::play_turn(int player_number, int enemy_player_num){
 	
@@ -157,6 +193,15 @@ void Game::play_turn(int player_number, int enemy_player_num){
 	
 }
 
+/*********************************************************************
+** Function:play_computer_turn
+** Description:play a computer turn
+** Parameters:player_number, enemy_player_num
+** Pre-Conditions:
+** Post-Conditions:turn is played. Nothing printed for conciseness
+*********************************************************************/ 
+
+
 void Game::play_computer_turn(int player_number, int enemy_player_num){
 	
 	//have the user ask the other player for a card; if they get it repeat.
@@ -230,6 +275,15 @@ void Game::play_computer_turn(int player_number, int enemy_player_num){
 	return;
 }
 
+/*********************************************************************
+** Function:computer_choice
+** Description:makes the computer play
+** Parameters:player_number
+** Pre-Conditions:none
+** Post-Conditions:returns a random card choice
+*********************************************************************/ 
+
+
 int Game::computer_choice(int player_number){
 	
 	int temp_choice = rand()%13;
@@ -243,6 +297,15 @@ int Game::computer_choice(int player_number){
 	
 }
 	
+
+/*********************************************************************
+** Function:deal_cards
+** Description:deals cards to hands
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:hands are delt
+*********************************************************************/ 
+
 
 void Game::deal_cards(){
 	
@@ -261,7 +324,16 @@ void Game::deal_cards(){
 }
 			
 			
-			
+	
+/*********************************************************************
+** Function:manage_gameplay
+** Description:parent function for whole game
+** Parameters:none
+** Pre-Conditions:no game
+** Post-Conditions:game done, winner printed
+*********************************************************************/ 
+
+		
 void Game::manage_gameplay (){
 	
 	int p1_racks, p2_racks, opposite_player_number, player_number;

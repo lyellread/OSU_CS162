@@ -1,21 +1,22 @@
-// == HAND.HPP - HAND CLASS HEADER FILE == //
+/*********************************************************************
+** Program Filename:hand.hpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:prototypes for the hand class
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #ifndef HAND
 #define HAND
 
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
-#include <ctime>
-#include <cmath>
-#include <cstdlib>
-#include <bits/stdc++.h>
 
 #include "card.hpp"
 
-using namespace std;
+using std::cout;
+using std::endl;
 
 class Hand {
 	

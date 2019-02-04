@@ -1,21 +1,22 @@
-// == DECK.HPP - DECK CLASS HEADER FILE == //
+/*********************************************************************
+** Program Filename:deck.hpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:prototypes for the deck class
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #ifndef DECK
 #define DECK
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
 #include <ctime>
-#include <cmath>
 #include <cstdlib>
-#include <bits/stdc++.h>
 
 #include "card.hpp"
 
-using namespace std;
+//using namespace std;
 
 class Deck {
 	

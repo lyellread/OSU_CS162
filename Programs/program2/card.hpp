@@ -1,19 +1,14 @@
-// == CARD.HPP - CARD CLASS HEADER FILE == //
+/*********************************************************************
+** Program Filename:card.hpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:prototypes for the card class
+** Input:na
+** Output:na
+*********************************************************************/
 
 #ifndef CARD
 #define CARD
-
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
-#include <ctime>
-#include <cmath>
-#include <cstdlib>
-#include <bits/stdc++.h>
-
-using namespace std;
 
 class Card {
 	

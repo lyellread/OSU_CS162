@@ -7,7 +7,7 @@ $(EXE_FILE): gofish.o card.o hand.o deck.o player.o game.o
 	$(CC) -o $(EXE_FILE) gofish.o card.o hand.o deck.o player.o game.o 
 
 gofish.o:
-	$(CC) -c gofish.cpp -std=c++11
+	$(CC) -c gofish.cpp 
 
 card.o:
 	$(CC) -c card.cpp
@@ -22,7 +22,7 @@ player.o:
 	$(CC) -c player.cpp
 
 game.o:
-	$(CC) -c game.cpp -std=c++11
+	$(CC) -c game.cpp
 
 clean:
 	rm -f *.o $(EXE_FILE)

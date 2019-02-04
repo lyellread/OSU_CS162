@@ -1,23 +1,30 @@
-// == GAME.HPP - GAME CLASS HEADER FILE == //
+/*********************************************************************
+** Program Filename:game.hpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:prototypes for the game class
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #ifndef GAME
 #define GAME
 
+#include <cstdio>
 #include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
 #include <ctime>
-#include <cmath>
-#include <random>
 #include <cstdlib>
-#include <bits/stdc++.h>
+#include <string>
 
 #include "deck.hpp"
 #include "player.hpp"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::cin;
+using std::string;
+using std::getchar;
 
 class Game {
 	

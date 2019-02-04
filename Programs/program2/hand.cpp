@@ -1,8 +1,24 @@
-// == HAND.CPP - FUNCTION DEFENITIONS FOR HAND CLASS == //
+/*********************************************************************
+** Program Filename:hand.cpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:hand class function definitions
+** Input:na
+** Output:na
+*********************************************************************/
+
 
 #include "hand.hpp"
 
 //==== Constructors and Destructors ====//
+
+/*********************************************************************
+** Function:Hand
+** Description:constructor
+** Parameters:none
+** Pre-Conditions:nothing
+** Post-Conditions:class created
+*********************************************************************/ 
 
 Hand::Hand(){
 
@@ -11,6 +27,14 @@ Hand::Hand(){
 	this->hand = new Card[52]; //inefficient but works.
 	this->current_hand_size = 0;
 }
+
+/*********************************************************************
+** Function:~Hand
+** Description:destructor
+** Parameters:none
+** Pre-Conditions:na
+** Post-Conditions:class destroyed
+*********************************************************************/ 
 
 Hand::~Hand(){
 	//cout << "Hand Destructor Called" << endl;
@@ -21,12 +45,30 @@ Hand::~Hand(){
 
 //==== Getters and Setters and Member Functions====//
 
+/*********************************************************************
+** Function:add_card_to_hand
+** Description:add a card to the hand
+** Parameters:card_to_add
+** Pre-Conditions:
+** Post-Conditions:card added
+*********************************************************************/ 
+
+
 void Hand::add_card_to_hand(Card card_to_add){
 	
 	this->hand[this->current_hand_size] = card_to_add;
 	++this->current_hand_size;
 	
 }
+
+/*********************************************************************
+** Function:print_hand
+** Description:prints hand for user
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:hand printed
+*********************************************************************/ 
+
 
 void Hand::print_hand(){
 	
@@ -43,6 +85,15 @@ void Hand::print_hand(){
 	
 	cout << "\n";
 }
+
+/*********************************************************************
+** Function:check_for_racks
+** Description:checks for racks
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:returns the number of the rack or -1
+*********************************************************************/ 
+
 
 int Hand::check_for_racks(){
 	
@@ -62,6 +113,15 @@ int Hand::check_for_racks(){
 	
 	return -1; 
 }
+
+/*********************************************************************
+** Function:pop_n_from_hand
+** Description:pops a card from hand
+** Parameters:number
+** Pre-Conditions:
+** Post-Conditions:card of number is popped from hand
+*********************************************************************/ 
+
 
 Card Hand::pop_n_from_hand (int number){
 	
@@ -89,11 +149,29 @@ Card Hand::pop_n_from_hand (int number){
 	return dne_return;
 }
 
+/*********************************************************************
+** Function:get_number_at_element
+** Description:gets number at element element
+** Parameters:element
+** Pre-Conditions:
+** Post-Conditions:returns the number at element
+*********************************************************************/ 
+
+
 int Hand::get_number_at_element(int element){
 	
 	return this->hand[element].get_number();
 
 }
+
+/*********************************************************************
+** Function:remove_all_n
+** Description:removes all of a number n
+** Parameters:number
+** Pre-Conditions:
+** Post-Conditions:all cards removed
+*********************************************************************/ 
+
 
 int Hand::remove_all_n(int card_number){
 	
@@ -114,6 +192,15 @@ int Hand::remove_all_n(int card_number){
 	return cards_removed;
 	
 }
+
+/*********************************************************************
+** Function:get_hand size
+** Description:returns hand size
+** Parameters:
+** Pre-Conditions:
+** Post-Conditions:hand size returned
+*********************************************************************/ 
+
 
 int Hand::get_hand_size(){
 	

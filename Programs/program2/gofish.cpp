@@ -1,24 +1,21 @@
-//temp test file boi//
+/*********************************************************************
+** Program Filename:gofish.cpp
+** Author:Lyell Read
+** Date:2/3/2019
+** Description:this file runs it all!
+** Input:na
+** Output:na
+*********************************************************************/
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string>
-#include <climits>
-#include <random>
-#include <chrono>
-#include <ctime>
-#include <cmath>
-#include <cstdlib>
-#include <bits/stdc++.h>
-
-#include "card.hpp"
-#include "deck.hpp"
-#include "hand.hpp"
-#include "player.hpp"
 #include "game.hpp"
 
-using namespace std;
+/*********************************************************************
+** Function:main
+** Description:main function
+** Parameters:none
+** Pre-Conditions:nothing
+** Post-Conditions:game done.
+*********************************************************************/ 
 
 int main() {
 
