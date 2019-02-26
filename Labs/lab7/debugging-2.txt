@@ -1,0 +1,28 @@
+Changes: 
+ - removed all (2) the sections of the program where some Dynarray's were pointed at each other.
+ - this means line 30 where d3 is set to d1, and line 36 where d2 is set to d1.
+
+Reason:
+ - obviously when you allocate new Dynarrays, it allocates memory. When you point those pointers at
+   something different without backing them up or deleting them there and then, it becomes 
+   impossible to free the memory those pointed to. 
+ - further, with all three pointers pointing to Dynarray d1, each one has the destructor called on
+   it, but instead of pointing to the memory they initially pointed to, they now point to memory 
+   that was already deallocated by the first ~Dynarray, and they are trying to delete already dealloc'd
+   mem.
+
+Use of GDB:
+ - placed breakpoint at line 37.
+ - checked to confirm my suspicion that all were pointing to the same memory address (which they were)
+   using print. 
+ - then continue
+ - then quit
+
+GDB Printout at line ~38:
+	(gdb) print d1
+	$5 = {data = 0x603010, n = 12, capacity = 16}
+	(gdb) print d2
+	$6 = {data = 0x603010, n = 12, capacity = 16}
+	(gdb) print d3
+	$7 = {data = 0x603010, n = 0, capacity = 16}
+

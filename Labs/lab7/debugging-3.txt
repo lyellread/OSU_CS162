@@ -1,0 +1,74 @@
+Changes:
+ - many. see changelog below.
+
+Reasons:
+ - various errors some of which are below:
+ - max age function had flipped operator (logic error)
+ - average age function was programmed stupidly - was summing partial averages or something?
+ - ifstream was beaking cause the id field was a string trying to fill an int (starting with
+   Darth Vader).
+ - pointer was [maybe] not defined...
+
+Use of GDB:
+ - set breakpoints throughout the read_people function, especially around lunes 62, 63.
+ - pause at breakpoints and check out the values of the fields that ifstream was populating.
+ - discovered the string error like that.
+ - rest was done reading code.
+
+Notes:
+ - NOT mem leak free... but not an error so OK
+
+Diff (AKA Changelog):
+
+18c18
+<   int id;
+---
+>   std::string id;
+43,44c43,44
+<   infile.clear();
+<   infile.seekg(0);
+---
+>   //infile.clear();
+>   //infile.seekg(0);
+56a57,60
+>
+>   infile.close();
+>   std::ifstream data(filename);
+>
+60,61c64,65
+<   do {
+<     infile >> new_person.last_name >> new_person.first_name >> new_person.id
+---
+>   for (int i = 0; i < n; ++i){
+>     data >> new_person.last_name >> new_person.first_name >> new_person.id
+63,64c67,69
+<     people[i++] = new_person;
+<   } while (!infile.eof());
+---
+>     //std::cout << new_person.first_name << std::endl << new_person.id << std::endl;
+>     people[i] = new_person;
+>   }
+75c80,81
+<   float avg = 0;
+---
+>   float total = 0;
+>   float avg;
+77c83
+<     avg += people[i].age / n;
+---
+>     total += people[i].age;
+78a85
+>   avg = total/n;
+89,90c96,97
+<   for (int i = 0; i < n; i++) {
+<     if (max > people[i].age) {
+---
+>   for (int i = 0; i < n; ++i) {
+>     if (max < people[i].age) {
+106c113,115
+<   struct person* people;
+---
+>
+>
+>   struct person* people = new struct person;
+

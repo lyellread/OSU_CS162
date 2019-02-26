@@ -1,0 +1,17 @@
+Changes: 
+ - allocated int * b dynamically
+
+Reason:
+ - in the original example, int * b was being initialized to a mem
+   address that was not allowed to be accessed by the program (on flip's
+   outdated version of g++, newer ones can detect and fix this...).
+
+Use of GDB:
+ - limited ;)
+ - first compiled with -g flag
+ - then opened in gdb
+ - then set breakpoints throughout the area wihtin lines 16-18 where the segfault
+   occurs.
+ - when the program execution halted, did a print of the variables and a step 
+   through to see that the mem addr was way out of bounds.
+ - quit GBD.
