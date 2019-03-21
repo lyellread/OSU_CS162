@@ -1,110 +1,96 @@
 //application.cpp
 
-#include "matrix.hpp"
-#include <cstdlib>
-
 #include <iostream>
 
 using std::cout;
 using std::endl;
-using std::cerr;
-using std::exception;
-using std::srand;
-using std::rand;
+
+#include "maze.hpp"
+//#include "maze_location.hpp"
+#include "maze_data.hpp"
+#include "player.hpp"
+
 
 
 int main(){
 	
-	srand(time(NULL));
+	cout << " == Application Started!" << endl;
+	
+	Maze thismaze(MAZE_DATA, 16, 16);
+	thismaze.display_maze();
+
+	Player explorer;
+	
+	char direction;
+	int target_row, target_col, row, col, done;
+	
+	explorer.set_location(1,1);
 	
 	
-	// Matrix<float> float_matrix(5,6);
-	// Matrix<float> float_matrix_two(5,6);
 	
-	// try{
+	while (done != 1){
 		
-		// for (int i = 0; i < 5; ++i){
-			// for (int j = 0; j < 6; ++j){
-				// float &temp = float_matrix.at(i,j);
-				// temp = (rand()%66)/2.3;
+		direction = explorer.get_move();
+		target_row = explorer.get_row();
+		target_col = explorer.get_col();
+		
+		row = target_row;
+		col = target_col;
+		
+		
+		
+		switch (direction){
+			
+			case 'W':
+				target_row--;
+				//cout << "W - UP" << endl;
+				break;
+			
+			case 'A':
+				target_col--;
+				//cout << "A - LEFT" << endl;
+				break;
+			
+			case 'S':
+				target_row++;
+				//cout << "S - DOWN" << endl;
+				break;
 				
-				// float &temp_two = float_matrix_two.at(i,j);
-				// temp_two = 2.3;
-			// }
-		// }
-		
-		// for (int i = 0; i < 5; ++i){
-			// for (int j = 0; j < 6; ++j){
-				// float &temp = float_matrix.at(i,j);
-				// float &temp_two = float_matrix_two.at(i,j);
-				// cout << "Temp One (" << i << ", " << j << ") == " << temp << "\t\t";
-				// cout << "Temp Two (" << i << ", " << j << ") == " << temp_two << endl;
-			// }
-		// }
-		
-		// //Matrix<float> &float_matrix_two_ref = float_matrix_two;
-		// float_matrix.add (float_matrix_two);
-		
-		// cout << "\n" << endl;
-		
-		// for (int i = 0; i < 5; ++i){
-			// for (int j = 0; j < 6; ++j){
-				// float &temp = float_matrix.at(i,j);
-				// float &temp_two = float_matrix_two.at(i,j);
-				// cout << "Temp One (" << i << ", " << j << ") == " << temp << "\t\t";
-				// cout << "Temp Two (" << i << ", " << j << ") == " << temp_two << endl;
-			// }
-		// }		
-		
-	// }catch(exception& e){
-		// cerr << e.what() << endl;
-	// }catch(...){
-		// cerr << "Some Exception was Thown... Unsure..." << endl;
-	// }
-	
-	
-	Matrix<int> int_matrix(3,3);
-	Matrix<int> int_matrix_two(3,3);
-	
-	try{
-		
-		for (int i = 0; i < 3; ++i){
-			for (int j = 0; j < 3; ++j){
-				int &temp = int_matrix.at(i,j);
-				temp = (rand()%66);
-				
-				int &temp_two = int_matrix_two.at(i,j);
-				temp_two = 22;
-			}
+			case 'D':
+				target_col++;
+				//cout << "D - RIGHT" << endl;
+				break;
 		}
 		
-		for (int i = 0; i < 3; ++i){
-			for (int j = 0; j < 3; ++j){
-				int &temp = int_matrix.at(i,j);
-				int &temp_two = int_matrix_two.at(i,j);
-				cout << "Temp One (" << i << ", " << j << ") == " << temp << "\t\t";
-				cout << "Temp Two (" << i << ", " << j << ") == " << temp_two << endl;
-			}
+		
+		MazeLocation * target_location = thismaze.get_location(target_row, target_col);
+		
+		//print a plus for every time this loop runs, to prove it is doing something
+		//cout << "+";
+		
+		if (target_location->get_is_occupiable()){
+			
+			//set the target square
+			explorer.set_location (target_row, target_col);
+			target_location->set_has_explorer(1);
+			
+			//now that we have set the target, unset the old square
+			target_location = thismaze.get_location(row, col);
+			target_location->set_has_explorer(0);
 		}
 		
-		//Matrix<int> &int_matrix_two_ref = int_matrix_two;
-		int_matrix.add (int_matrix_two);
+		target_location = thismaze.get_location(target_row, target_col);
 		
-		cout << "\n" << endl;
+		if (target_location->is_end()){
+			done == 1; 
+			cout << "END FOUND" << endl;
+			thismaze.display_maze();
+			break;
+		}
 		
-		for (int i = 0; i < 3; ++i){
-			for (int j = 0; j < 3; ++j){
-				int &temp = int_matrix.at(i,j);
-				int &temp_two = int_matrix_two.at(i,j);
-				cout << "Temp One (" << i << ", " << j << ") == " << temp << "\t\t";
-				cout << "Temp Two (" << i << ", " << j << ") == " << temp_two << endl;
-			}
-		}		
-		
-	}catch(exception& e){
-		cerr << e.what() << endl;
-	}catch(...){
-		cerr << "Some Exception was Thown... Unsure..." << endl;
+
 	}
+	
+	cout << " == Application Finished! " << endl;
 	
 }
